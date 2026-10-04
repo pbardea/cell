@@ -221,13 +221,16 @@ final class BatteryMonitor: NSObject, CBCentralManagerDelegate, CBPeripheralDele
         guard let button = statusItem.button else { rebuildMenu(items); return }
 
         let lowest = items.compactMap(\.level).min()
-        button.font = NSFont.monospacedDigitSystemFont(ofSize: NSFont.systemFontSize,
-                                                      weight: .regular)
+        // The menu bar is crowded real estate: no percent signs, a hairline
+        // separator between halves, and a slightly tighter face than body text.
+        button.font = NSFont.monospacedDigitSystemFont(ofSize: 12, weight: .regular)
         button.image = batterySymbol(for: lowest)
         button.imagePosition = .imageLeading
+        button.imageHugsTitle = true
         button.title = items.isEmpty
-            ? " --"
-            : " " + items.map { $0.level.map { "\($0)%" } ?? "--" }.joined(separator: " ")
+            ? "\u{2009}--"
+            : "\u{2009}" + items.map { $0.level.map(String.init) ?? "--" }
+                                 .joined(separator: "\u{2009}·\u{2009}")
         // Tinting the button colours the template symbol and the text together.
         button.contentTintColor = (lowest ?? 100) <= 20 ? .systemRed : nil
 
