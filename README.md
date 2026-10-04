@@ -3,7 +3,7 @@
 A tiny macOS menu bar app that shows the battery level of a Bluetooth device —
 including **both halves of a split keyboard**.
 
-![Cell in the menu bar](docs/preview.svg)
+![Cell in the menu bar](docs/preview.png)
 
 ## Why this exists
 
