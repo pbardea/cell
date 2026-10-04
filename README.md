@@ -51,6 +51,7 @@ Your Mac cached the old service list. Hosts don't re-scan a paired device.
 |---|---|
 | **Menu bar** | Battery glyph + one number per half, red at 20% |
 | **Swap Left / Right** | If the sides read backwards |
+| **Hide Battery Icon** | Numbers only, no glyph |
 | **Keyboard ▸** | Pick your device |
 | **Launch at Login** | Start automatically |
 

@@ -12,6 +12,7 @@ private let presentationFormatUUID = CBUUID(string: "2904")
 private enum Key {
     static let deviceID = "deviceIdentifier"
     static let swapSides = "swapSides"
+    static let hideIcon = "hideIcon"
 }
 
 /// Bluetooth SIG "GATT Characteristic Presentation Format" description values.
@@ -51,6 +52,12 @@ final class BatteryMonitor: NSObject, CBCentralManagerDelegate, CBPeripheralDele
     private var swapSides: Bool {
         get { UserDefaults.standard.bool(forKey: Key.swapSides) }
         set { UserDefaults.standard.set(newValue, forKey: Key.swapSides); render() }
+    }
+
+    /// Defaults to false, so the glyph shows unless it is turned off.
+    private var hideIcon: Bool {
+        get { UserDefaults.standard.bool(forKey: Key.hideIcon) }
+        set { UserDefaults.standard.set(newValue, forKey: Key.hideIcon); render() }
     }
 
     func start() {
@@ -224,13 +231,16 @@ final class BatteryMonitor: NSObject, CBCentralManagerDelegate, CBPeripheralDele
         // The menu bar is crowded real estate: no percent signs, a hairline
         // separator between halves, and a slightly tighter face than body text.
         button.font = NSFont.monospacedDigitSystemFont(ofSize: 12, weight: .regular)
-        button.image = batterySymbol(for: lowest)
+        button.image = hideIcon ? nil : batterySymbol(for: lowest)
         button.imagePosition = .imageLeading
         button.imageHugsTitle = true
+        // The hair space sets the glyph off from the digits; without a glyph it
+        // would just be a dent in the menu bar spacing.
+        let gap = hideIcon ? "" : "\u{2009}"
         button.title = items.isEmpty
-            ? "\u{2009}--"
-            : "\u{2009}" + items.map { $0.level.map(String.init) ?? "--" }
-                                 .joined(separator: "\u{2009}·\u{2009}")
+            ? gap + "--"
+            : gap + items.map { $0.level.map(String.init) ?? "--" }
+                         .joined(separator: "\u{2009}·\u{2009}")
         // Tinting the button colours the template symbol and the text together.
         button.contentTintColor = (lowest ?? 100) <= 20 ? .systemRed : nil
 
@@ -304,6 +314,10 @@ final class BatteryMonitor: NSObject, CBCentralManagerDelegate, CBPeripheralDele
             menu.addItem(swap)
         }
 
+        let icon = item("Hide Battery Icon", #selector(toggleIcon))
+        icon.state = hideIcon ? .on : .off
+        menu.addItem(icon)
+
         if !candidates.isEmpty {
             let picker = NSMenu()
             for peripheral in candidates {
@@ -373,6 +387,8 @@ final class BatteryMonitor: NSObject, CBCentralManagerDelegate, CBPeripheralDele
     }
 
     @objc private func toggleSwap() { swapSides.toggle() }
+
+    @objc private func toggleIcon() { hideIcon.toggle() }
 
     @objc private func pickDevice(_ sender: NSMenuItem) {
         guard let peripheral = sender.representedObject as? CBPeripheral else { return }
