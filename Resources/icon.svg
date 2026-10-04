@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4AD66D"/>
+      <stop offset="100%" stop-color="#1B9E4B"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.26"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- squircle plate, matching the macOS icon grid (824pt art in a 1024 canvas) -->
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#bg)"/>
+  <rect x="100" y="100" width="824" height="824" rx="185" fill="url(#gloss)"/>
+
+  <!-- battery body -->
+  <rect x="236" y="386" width="498" height="252" rx="78"
+        fill="none" stroke="#ffffff" stroke-width="44" stroke-opacity="0.96"/>
+  <!-- terminal -->
+  <path d="M 772 462 a 52 52 0 0 1 0 100 Z" fill="#ffffff" fill-opacity="0.96"/>
+  <!-- charge fill: two cells, echoing a split keyboard's two halves -->
+  <rect x="290" y="440" width="186" height="144" rx="40" fill="#ffffff" fill-opacity="0.96"/>
+  <rect x="496" y="440" width="138" height="144" rx="40" fill="#ffffff" fill-opacity="0.45"/>
+</svg>

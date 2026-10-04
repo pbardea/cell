@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="470" viewBox="0 0 760 470" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Text', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2d4a63"/><stop offset="100%" stop-color="#1b2b3a"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <rect width="760" height="470" rx="14" fill="url(#wall)"/>
+
+  <!-- menu bar strip -->
+  <rect x="0" y="0" width="760" height="40" fill="#0f1823" fill-opacity="0.55"/>
+  <g transform="translate(486 12)">
+    <rect x="-10" y="-6" width="132" height="28" rx="7" fill="#ffffff" fill-opacity="0.16"/>
+    <rect x="0" y="4" width="21" height="11" rx="3.4" fill="none" stroke="#fff" stroke-width="1.6"/>
+    <rect x="2" y="6" width="17" height="7" rx="1.8" fill="#fff"/>
+    <path d="M22.6 7.2 a2.4 2.4 0 0 1 0 4.6 Z" fill="#fff"/>
+    <text x="31" y="15" font-size="14.5" fill="#fff" font-weight="500">88% 72%</text>
+  </g>
+  <text x="640" y="25" font-size="13.5" fill="#ffffff" fill-opacity="0.72">Thu 01:24</text>
+
+  <!-- dropdown -->
+  <g filter="url(#shadow)" transform="translate(430 44)">
+    <rect width="300" height="366" rx="12" fill="#2b2b2e" fill-opacity="0.98"/>
+    <rect width="300" height="366" rx="12" fill="none" stroke="#ffffff" stroke-opacity="0.12"/>
+
+    <text x="20" y="34" font-size="13" font-weight="700" fill="#ffffff" fill-opacity="0.62">Ergomech Sofle</text>
+
+    <text x="20" y="72" font-size="14.5" fill="#f2f2f2">Left:  88%</text>
+    <g transform="translate(150 61)">
+      <rect width="130" height="11" rx="3" fill="#ffffff" fill-opacity="0.14"/>
+      <rect width="114" height="11" rx="3" fill="#4AD66D"/>
+    </g>
+
+    <text x="20" y="106" font-size="14.5" fill="#f2f2f2">Right: 72%</text>
+    <g transform="translate(150 95)">
+      <rect width="130" height="11" rx="3" fill="#ffffff" fill-opacity="0.14"/>
+      <rect width="94" height="11" rx="3" fill="#4AD66D"/>
+    </g>
+
+    <line x1="14" y1="130" x2="286" y2="130" stroke="#ffffff" stroke-opacity="0.13"/>
+    <text x="20" y="156" font-size="13.5" fill="#ffffff" fill-opacity="0.55">Updated 1:24:06 AM</text>
+
+    <text x="20" y="194" font-size="14.5" fill="#f2f2f2">Refresh</text>
+    <text x="20" y="228" font-size="14.5" fill="#f2f2f2">Swap Left / Right</text>
+    <text x="20" y="262" font-size="14.5" fill="#f2f2f2">Keyboard</text>
+    <text x="272" y="262" font-size="14.5" fill="#ffffff" fill-opacity="0.5" text-anchor="end">›</text>
+    <text x="20" y="296" font-size="14.5" fill="#f2f2f2">Launch at Login</text>
+
+    <line x1="14" y1="318" x2="286" y2="318" stroke="#ffffff" stroke-opacity="0.13"/>
+    <text x="20" y="344" font-size="14.5" fill="#f2f2f2">Quit</text>
+    <text x="272" y="344" font-size="13.5" fill="#ffffff" fill-opacity="0.45" text-anchor="end">⌘Q</text>
+  </g>
+
+  <text x="34" y="430" font-size="13" fill="#ffffff" fill-opacity="0.45">Both halves of a split keyboard, read straight from the BLE battery service.</text>
+</svg>

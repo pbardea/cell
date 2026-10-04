@@ -1,0 +1,7 @@
+.DS_Store
+build/
+*.zip
+probe
+scan
+scan2
+*.o
